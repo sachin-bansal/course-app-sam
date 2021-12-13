@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Course application using AWS SAM CLI
+
+Globals:
+  Function:
+    Timeout: 3
+    Runtime: nodejs16.x
+
+Resources:
+  AddCourseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: addCourse.handler
+      Events:
+        AddCourse:
+          Type: Api
+          Properties:
+            Path: /add
+            Method: post
+
+  UpdateCourseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: updateCourse.handler
+      Events:
+        AddCourse:
+          Type: Api
+          Properties:
+            Path: /update/:id
+            Method: put
