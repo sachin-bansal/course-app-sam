@@ -6,13 +6,13 @@ exports.handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyRe
     let eventLogs = JSON.stringify(event);
     console.log(eventLogs);
     
-    if (!event.queryStringParameters?.id || !event.body) {
+    if (!event.pathParameters?.id || !event.body) {
         return {
             'statusCode': 400,
             'body': 'Bad Request'
         };
     }
-    let id = event.queryStringParameters.id;
+    let id = event.pathParameters.id;
     const course = courses.find(c => c.id === parseInt(id));
     if(!course){
         return {

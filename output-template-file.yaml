@@ -4,7 +4,8 @@ Description: Course application using AWS SAM CLI
 Globals:
   Function:
     Timeout: 3
-    Runtime: nodejs16.x
+    Runtime: nodejs14.x
+    CodeUri: dist/
 Resources:
   AddCourseFunction:
     Type: AWS::Serverless::Function
@@ -16,7 +17,7 @@ Resources:
           Properties:
             Path: /add
             Method: post
-      CodeUri: s3://sachin-aircall-sam/82f02095245b65383ab4f6156bc4a7b7
+      CodeUri: s3://sachin-aircall-sam/f0b72eb9faf38b44f7f250521853298d
   UpdateCourseFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -25,6 +26,6 @@ Resources:
         AddCourse:
           Type: Api
           Properties:
-            Path: /update/:id
+            Path: /update/{id}
             Method: put
-      CodeUri: s3://sachin-aircall-sam/82f02095245b65383ab4f6156bc4a7b7
+      CodeUri: s3://sachin-aircall-sam/f0b72eb9faf38b44f7f250521853298d

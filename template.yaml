@@ -5,7 +5,8 @@ Description: Course application using AWS SAM CLI
 Globals:
   Function:
     Timeout: 3
-    Runtime: nodejs16.x
+    Runtime: nodejs14.x
+    CodeUri: dist/
 
 Resources:
   AddCourseFunction:
@@ -27,5 +28,5 @@ Resources:
         AddCourse:
           Type: Api
           Properties:
-            Path: /update/:id
+            Path: /update/{id}
             Method: put
