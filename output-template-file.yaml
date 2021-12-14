@@ -15,9 +15,9 @@ Resources:
         AddCourse:
           Type: Api
           Properties:
-            Path: /add
+            Path: /course/add
             Method: post
-      CodeUri: s3://sachin-aircall-sam/f0b72eb9faf38b44f7f250521853298d
+      CodeUri: s3://sachin-aircall-sam/58f9529f09624090e764ea4f9b13e659
   UpdateCourseFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -26,6 +26,39 @@ Resources:
         AddCourse:
           Type: Api
           Properties:
-            Path: /update/{id}
+            Path: /course/update/{id}
             Method: put
-      CodeUri: s3://sachin-aircall-sam/f0b72eb9faf38b44f7f250521853298d
+      CodeUri: s3://sachin-aircall-sam/58f9529f09624090e764ea4f9b13e659
+  GetAllCoursesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getAllCourses.handler
+      Events:
+        AddCourse:
+          Type: Api
+          Properties:
+            Path: /courses
+            Method: get
+      CodeUri: s3://sachin-aircall-sam/58f9529f09624090e764ea4f9b13e659
+  GetCourseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getCourse.handler
+      Events:
+        AddCourse:
+          Type: Api
+          Properties:
+            Path: /course/{id}
+            Method: get
+      CodeUri: s3://sachin-aircall-sam/58f9529f09624090e764ea4f9b13e659
+  DeleteCourseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: deleteCourse.handler
+      Events:
+        AddCourse:
+          Type: Api
+          Properties:
+            Path: /course/delete/{id}
+            Method: delete
+      CodeUri: s3://sachin-aircall-sam/58f9529f09624090e764ea4f9b13e659

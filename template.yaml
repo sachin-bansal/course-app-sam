@@ -17,7 +17,7 @@ Resources:
         AddCourse:
           Type: Api
           Properties:
-            Path: /add
+            Path: /course/add
             Method: post
 
   UpdateCourseFunction:
@@ -28,5 +28,38 @@ Resources:
         AddCourse:
           Type: Api
           Properties:
-            Path: /update/{id}
+            Path: /course/update/{id}
             Method: put
+
+  GetAllCoursesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getAllCourses.handler
+      Events:
+        AddCourse:
+          Type: Api
+          Properties:
+            Path: /courses
+            Method: get
+
+  GetCourseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: getCourse.handler
+      Events:
+        AddCourse:
+          Type: Api
+          Properties:
+            Path: /course/{id}
+            Method: get
+
+  DeleteCourseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: deleteCourse.handler
+      Events:
+        AddCourse:
+          Type: Api
+          Properties:
+            Path: /course/delete/{id}
+            Method: delete
